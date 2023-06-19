@@ -12,27 +12,22 @@ public class MyAccount extends TestBase {
 		PageFactory.initElements(wd, this);
 	}
 
-	@FindBy(css = "#content>h2:first-of-type")
-	WebElement myAccountText;
 
 	@FindBy(css = "ul.nav>li:nth-of-type(3) a")
-	private WebElement ComponentsBtn;
+	private WebElement componentsBtn;
 
 	@FindBy(xpath = "//a[text()=\"Monitors (2)\"]")
-	private WebElement MonitorsBtn;
+	private WebElement monitorsBtn;
 
 	
-	public String getMyAccountText() {
-		return myAccountText.getText();
-
-	}
 
 	public void clickComponentsBtn() {
-		ComponentsBtn.click();
+		componentsBtn.click();
 	}
 
-	public void clickMonitorsBtn() {
-		MonitorsBtn.click();
+	public Monitors clickMonitorsBtn() {
+		monitorsBtn.click();
+		return new Monitors();
 	}
 	
 }

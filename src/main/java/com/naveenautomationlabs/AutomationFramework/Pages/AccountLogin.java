@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import com.naveenautomationlabs.AutomationFramework.base.TestBase;
 
 public class AccountLogin extends TestBase {
-	
+
 	public AccountLogin() {
 		PageFactory.initElements(wd, this);
 	}
@@ -18,19 +18,32 @@ public class AccountLogin extends TestBase {
 	@FindBy(id = "input-password")
 	private WebElement passwordInputField;
 
-	@FindBy(css = "input[value=\"Login\"]")
+	@FindBy(css = "input[value='Login']")
 	private WebElement loginBtn;
 
-	
-	public void enterEmail() {
+	@FindBy(css = "div.form-group a")
+	private WebElement forgotPasswordLink;
+
+	@FindBy(css = "div.alert")
+	private WebElement passwordResetLinkText;
+
+	private void enterEmail() {
 		emailInputField.sendKeys("manpreetkaur1991@gmail.com");
 	}
 
-	public void enterPassword() {
+	private void enterPassword() {
 		passwordInputField.sendKeys("manpreetkaur");
 	}
-
-	public void clickLoginBtn() {
+	
+	private MyAccount clickLoginBtn() {
 		loginBtn.click();
+		return new MyAccount();
 	}
+
+	public MyAccount loginToPortal() {
+		enterEmail();
+		enterPassword();
+		return clickLoginBtn();
+	}
+	
 }

@@ -1,11 +1,20 @@
 package com.naveenautomationlabs.AutomationFramework.Pages;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import com.naveenautomationlabs.AutomationFramework.base.TestBase;
+
+import net.bytebuddy.asm.Advice.Argument;
 
 public class AppleCinema30 extends TestBase {
 
@@ -14,7 +23,7 @@ public class AppleCinema30 extends TestBase {
 		PageFactory.initElements(wd, this);
 	}
 
-	@FindBy(css = "div.radio>label>input[value=\"5\"]")
+	@FindBy(css = "div.radio>label>input[value=\"7\"]")
 	WebElement Radiobtn;
 
 	@FindBy(css = "div.checkbox>label>input[value=\"9\"]")
@@ -22,57 +31,93 @@ public class AppleCinema30 extends TestBase {
 
 	@FindBy(css = "#input-option217")
 	WebElement Dropdown;
-	
-	@FindBy(css = "#input-option209") 
+
+	@FindBy(css = "#input-option209")
 	WebElement textInputArea;
 
 	@FindBy(css = "#button-upload222")
 	WebElement uploadFileButton;
 
-	@FindBy(css = "#input-quantity")
-	WebElement quantityTextField;
-
 	@FindBy(xpath = "//button[text()=\"Add to Cart\"]")
 	WebElement addToCartBtn;
-	
+
 	@FindBy(xpath = "//a[text()=\"shopping cart\"]")
 	WebElement shoppingCartBtn;
 
-	public void selectRadioBtn() {
+	private void selectRadioBtn() {
 		Radiobtn.click();
 	}
 
-	public void selectCheckbox() {
+	private void selectCheckbox() {
 		Checkbox.click();
 	}
-	
-	public void selectDropdown() {
+
+	private void selectDropdown() {
 		Select sc = new Select(Dropdown);
 		sc.selectByValue("3");
 	}
 
-	public void uploadFile() {
-		uploadFileButton.sendKeys("C:\\Users\\parte\\Downloads\\test.pdf");
+	private void enterText() {
+		textInputArea.sendKeys("test");
+	}
+
+	private void uploadFile() {
+//		uploadFileButton.sendKeys("C:\\Users\\parte\\Downloads\\test.pdf");
+
+		JavascriptExecutor js = (JavascriptExecutor) wd;
+		js.executeScript("arguments[0].click();", uploadFileButton);
+
+		try {
+			Robot rb = new Robot();
+			rb.delay(2000);
+
+			// put path to file in a clipboard
+
+			StringSelection ss = new StringSelection("C:\\Users\\parte\\Downloads\\test.pdf");
+			Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
+
+			// CTRL+V
+
+			rb.keyPress(KeyEvent.VK_CONTROL);
+			rb.keyPress(KeyEvent.VK_V);
+			rb.delay(2000);
+
+			rb.keyRelease(KeyEvent.VK_CONTROL);
+			rb.keyRelease(KeyEvent.VK_V);
+			rb.delay(2000);
+
+			// Enter
+			rb.keyPress(KeyEvent.VK_ENTER);
+			rb.keyPress(KeyEvent.VK_ENTER);
+
+		} catch (AWTException e) {
+
+			e.printStackTrace();
+		}
+
 		wd.switchTo().alert().accept();
 	}
 
-	public void enterText() {
-		textInputArea.sendKeys("test");
-	}
-	
-	public void enterQuantity() {
-		quantityTextField.clear();
-		quantityTextField.sendKeys("1");
-
-	}
-
-	public void clickAddToCartButton() {
+	private AppleCinema30 clickAddToCartButton() {
 		addToCartBtn.click();
+		return new AppleCinema30();
 	}
-	
-	public void clickShoppingCartBtn() {
-		
+
+	private ShoppingCart clickShoppingCartBtn() {
+		shoppingCartBtn.click();
+		return new ShoppingCart();
+
 	}
-	
+
+	public void cartDetails() {
+		selectRadioBtn();
+		selectCheckbox();
+		selectDropdown();
+		enterText();
+		uploadFile();
+		clickAddToCartButton();
+		clickShoppingCartBtn();
+
+	}
 
 }

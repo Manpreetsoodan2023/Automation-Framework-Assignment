@@ -6,19 +6,19 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.naveenautomationlabs.AutomationFramework.base.TestBase;
 
-public class Monitors extends TestBase {
+public class ShoppingCart extends TestBase {
 
-	public Monitors() {
+	public ShoppingCart() {
+
 		PageFactory.initElements(wd, this);
+
 	}
-	
 
+	@FindBy(xpath = "//a[text()=\"Checkout\"]")
+	private WebElement checkoutBtn;
 
-	@FindBy(xpath = "//a[text()='Apple Cinema 30\"']")
-	WebElement appleCinemaBtn;
-
-	public AppleCinema30 clickAppleCinemaBtn() {
-		appleCinemaBtn.click();
-		return new AppleCinema30();
+	public Checkout clickCheckoutBtn() {
+		checkoutBtn.click();
+		return new Checkout();
 	}
 }
