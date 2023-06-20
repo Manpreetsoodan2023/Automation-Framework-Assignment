@@ -35,19 +35,20 @@ public class SuccessMessageTest extends TestBase {
 	@Test
 	public void validateOrderPlacedSuccessfully() {
 
+		yourStore.clickMyAccountBtn();
 		registerAccount = yourStore.clickRegisterBtn();
 		myAccount = registerAccount.enterRegistrationDetails();
 		myAccount.clickComponentsBtn();
 		monitors = myAccount.clickMonitorsBtn();
 		appleCinema = monitors.clickAppleCinemaBtn();
-
-		shoppingCart = new ShoppingCart();
+		appleCinema.cartDetails();
+		appleCinema.clickAddToCartButton();
+		shoppingCart = appleCinema.clickShoppingCartBtn();
 		checkout = shoppingCart.clickCheckoutBtn();
-
 		checkout.enterBillingDetails();
 		checkout.confirmFinalOrder();
+		success = checkout.clickConfirmOrderBtn();
 
-		success = new SuccessMessage();
 		String messageText = success.displaySuccessMessage();
 		Assert.assertEquals(messageText, "Your order has been placed!", "Correct message is not displayed");
 		success.clickContinueBtn();

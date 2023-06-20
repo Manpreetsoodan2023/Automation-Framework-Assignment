@@ -14,8 +14,6 @@ import org.openqa.selenium.support.ui.Select;
 
 import com.naveenautomationlabs.AutomationFramework.base.TestBase;
 
-import net.bytebuddy.asm.Advice.Argument;
-
 public class AppleCinema30 extends TestBase {
 
 	public AppleCinema30() {
@@ -98,12 +96,12 @@ public class AppleCinema30 extends TestBase {
 		wd.switchTo().alert().accept();
 	}
 
-	private AppleCinema30 clickAddToCartButton() {
+	public AppleCinema30 clickAddToCartButton() {
 		addToCartBtn.click();
 		return new AppleCinema30();
 	}
 
-	private ShoppingCart clickShoppingCartBtn() {
+	public ShoppingCart clickShoppingCartBtn() {
 		shoppingCartBtn.click();
 		return new ShoppingCart();
 

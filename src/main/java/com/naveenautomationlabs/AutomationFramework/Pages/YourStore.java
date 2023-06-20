@@ -16,7 +16,7 @@ public class YourStore extends TestBase {
 	@FindBy(css = "ul.list-inline>li:nth-of-type(2) a")
 	private WebElement myAccountBtn;
 
-	@FindBy(css = "ul.dropdown-menu>li:first-of-type a")
+	@FindBy(xpath = "(//ul//a[text()='Register'])[1]")
 	private WebElement registerBtn;
 
 	
