@@ -21,4 +21,13 @@ public class ShoppingCart extends TestBase {
 		checkoutBtn.click();
 		return new Checkout();
 	}
+
+	
+	@FindBy(css = "div.alert")
+	WebElement shoppingCartMessage;
+
+	public String displaySuccessMessage() {
+		return shoppingCartMessage.getText();
+	}
+
 }

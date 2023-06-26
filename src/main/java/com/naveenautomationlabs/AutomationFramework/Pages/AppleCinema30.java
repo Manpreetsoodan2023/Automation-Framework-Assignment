@@ -21,7 +21,7 @@ public class AppleCinema30 extends TestBase {
 		PageFactory.initElements(wd, this);
 	}
 
-	@FindBy(css = "div.radio>label>input[value=\"7\"]")
+	@FindBy(xpath = "(//input[@name='option[218]'])[2]")
 	WebElement Radiobtn;
 
 	@FindBy(css = "div.checkbox>label>input[value=\"9\"]")

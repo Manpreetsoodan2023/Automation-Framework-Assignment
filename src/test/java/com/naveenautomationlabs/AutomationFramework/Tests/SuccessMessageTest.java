@@ -7,9 +7,11 @@ import org.testng.annotations.Test;
 
 import com.naveenautomationlabs.AutomationFramework.Pages.AppleCinema30;
 import com.naveenautomationlabs.AutomationFramework.Pages.Checkout;
+import com.naveenautomationlabs.AutomationFramework.Pages.Iphone;
 import com.naveenautomationlabs.AutomationFramework.Pages.Monitors;
 import com.naveenautomationlabs.AutomationFramework.Pages.MyAccount;
 import com.naveenautomationlabs.AutomationFramework.Pages.RegisterAccount;
+import com.naveenautomationlabs.AutomationFramework.Pages.SearchIphone;
 import com.naveenautomationlabs.AutomationFramework.Pages.ShoppingCart;
 import com.naveenautomationlabs.AutomationFramework.Pages.SuccessMessage;
 import com.naveenautomationlabs.AutomationFramework.Pages.YourStore;
@@ -25,6 +27,8 @@ public class SuccessMessageTest extends TestBase {
 	ShoppingCart shoppingCart;
 	Checkout checkout;
 	SuccessMessage success;
+	SearchIphone searchIphone;
+	Iphone iphone;
 
 	@BeforeMethod
 	public void setUp() {
@@ -35,6 +39,7 @@ public class SuccessMessageTest extends TestBase {
 	@Test
 	public void validateOrderPlacedSuccessfully() {
 
+		
 		yourStore.clickMyAccountBtn();
 		registerAccount = yourStore.clickRegisterBtn();
 		myAccount = registerAccount.enterRegistrationDetails();
@@ -55,6 +60,8 @@ public class SuccessMessageTest extends TestBase {
 
 	}
 
+	
+	
 	@AfterMethod
 	public void quit() {
 //	tearDown();    

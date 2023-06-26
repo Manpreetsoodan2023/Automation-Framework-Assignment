@@ -6,21 +6,33 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
+import org.testng.annotations.BeforeClass;
+
+import com.naveenautomationlabs.AutomationFramework.Listeners.WebdriverEvents;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestBase {
 
-	public WebDriver wd;
-	FileInputStream fileInputStream;
-	Properties prop = new Properties();
+	public static WebDriver wd;
+	private FileInputStream fileInputStream;
+	private Properties prop;
+	public static Logger logger;
+	private WebdriverEvents events;
+	private EventFiringWebDriver eDriver;
 
 	public TestBase() {
-		
-		
+		prop = new Properties();
+
 		try {
 			fileInputStream = new FileInputStream(
-					"C:\\Users\\parte\\eclipse-workspace\\AutomationFramework\\src\\main\\java\\com\\naveenautomationlabs\\AutomationFramework\\Config\\Config.properties");
+					"./src\\main\\java\\com\\naveenautomationlabs\\AutomationFramework\\Config\\Config.properties");
 		} catch (FileNotFoundException e) {
 
 			e.printStackTrace();
@@ -33,13 +45,22 @@ public class TestBase {
 		}
 	}
 
+	@BeforeClass
+	public void setUpLogger() {
+		logger = Logger.getLogger(TestBase.class);
+		PropertyConfigurator.configure("log4j.properties");
+		BasicConfigurator.configure();
+		logger.setLevel(Level.ALL);
+
+	}
+
 	public void initialisation() {
 
 		String browserName = prop.getProperty("browser");
 
 		switch (browserName) {
 		case "chrome":
-			wd=WebDriverManager.chromedriver().create();
+			wd = WebDriverManager.chromedriver().create();
 
 			break;
 
@@ -57,6 +78,11 @@ public class TestBase {
 			System.out.println("Not a valid browser");
 			break;
 		}
+
+		eDriver = new EventFiringWebDriver(wd);
+		events = new WebdriverEvents();
+		eDriver.register(events);
+		wd = eDriver;
 
 		wd.get(prop.getProperty("URL"));
 		wd.manage().timeouts().implicitlyWait(Long.parseLong(prop.getProperty("IMPLICIT_WAIT")), TimeUnit.SECONDS);
