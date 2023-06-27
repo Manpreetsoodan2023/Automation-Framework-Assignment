@@ -1,5 +1,6 @@
 package com.naveenautomationlabs.AutomationFramework.Tests;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -32,8 +33,11 @@ public class MonitorsTest extends TestBase {
 		myAccount = accountLogin.loginToPortal();
 		myAccount.clickComponentsBtn();
 		monitors = myAccount.clickMonitorsBtn();
-		monitors.clickWishListBtn();
+		monitors.getWishListBtnText();
 		
+		String wishListText = "Wish List" + " ("+ monitors.count +")";
+		
+		Assert.assertEquals(monitors.wishListBtn.getText(), wishListText, "Wishlist is not getting updated");
 	}
 
 	@AfterMethod

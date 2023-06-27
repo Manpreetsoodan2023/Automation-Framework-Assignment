@@ -1,5 +1,7 @@
 package com.naveenautomationlabs.AutomationFramework.Pages;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,6 +15,8 @@ public class Monitors extends TestBase {
 		PageFactory.initElements(wd, this);
 	}
 
+	public int count = 0;
+	
 	@FindBy(xpath = "//a[text()='Apple Cinema 30\"']")
 	private WebElement appleCinemaBtn;
 
@@ -21,19 +25,21 @@ public class Monitors extends TestBase {
 		return new AppleCinema30();
 	}
 
-	@FindBy(css = "button[onclick = \"wishlist.add('42');\"]")
-	private WebElement wishListBtn;
-
-	public void clickWishListBtn() {
-		wishListBtn.click();
-	}
-
 	
+	@FindBy(xpath = "//span[contains(text(),'Wish List')]")
+	public WebElement wishListBtn;
 	
-	public void getWishListText() {
-		String wishListText = wd.findElement(By.xpath("//span[text()=\\\"Wish List (0)\\\"]")).getText();
-		int quantity = Integer.parseInt(wishListText);
-		System.out.println(quantity);
+	public boolean getWishListBtnText() {
+
+		List<WebElement> wishListElements = wd.findElements(By.cssSelector("button>i.fa.fa-heart"));
+		for (WebElement webElement : wishListElements) {
+			
+			webElement.click();
+			
+			count++;
+		}
+
+		return true;
 	}
 
 }
