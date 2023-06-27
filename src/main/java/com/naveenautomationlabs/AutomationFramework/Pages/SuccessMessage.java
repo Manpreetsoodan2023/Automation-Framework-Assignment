@@ -14,10 +14,10 @@ public class SuccessMessage extends TestBase {
 	}
 
 	@FindBy(xpath = "//h1[text()=\"Your order has been placed!\"]")
-	WebElement successMessageText;
+	private WebElement successMessageText;
 
 	@FindBy(css = "//a[text()=\"Continue\"]")
-	WebElement continueBtn;
+	private WebElement continueBtn;
 
 	public String displaySuccessMessage() {
 		return successMessageText.getText();

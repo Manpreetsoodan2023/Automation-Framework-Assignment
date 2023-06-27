@@ -13,7 +13,7 @@ public class Iphone extends TestBase {
 	}
 
 	@FindBy(css = "#input-quantity")
-	WebElement quantiyText;
+	private WebElement quantiyText;
 
 	public void InputQuantity() {
 		quantiyText.clear();
@@ -22,14 +22,14 @@ public class Iphone extends TestBase {
 	}
 
 	@FindBy(xpath = "//button[text()=\"Add to Cart\"]")
-	WebElement addToCartBtn;
+	private WebElement addToCartBtn;
 
 	public void clickAddToCartBtn() {
 		addToCartBtn.click();
 	}
 
 	@FindBy(xpath = "//a[text()='shopping cart']")
-	WebElement shoppingCartBtn;
+	private WebElement shoppingCartBtn;
 
 	public SuccessMessage clickShoppingCartBtn() {
 		shoppingCartBtn.click();
@@ -37,18 +37,32 @@ public class Iphone extends TestBase {
 	}
 
 	@FindBy(xpath = "//h1[text()='iPhone']")
-	WebElement pageText;
-	
+	private WebElement pageText;
+
 	public String displayPageText() {
 		return pageText.getText();
 	}
 	
+
+	@FindBy(css = "div.alert")
+	private WebElement shoppingCartMessage;
+
+	public String displaySuccessMessage() {
+		return shoppingCartMessage.getText();
+	}
 	
 	@FindBy(css = "div.btn-group>button[data-original-title=\"Add to Wish List\"]")
-	WebElement wishlistBtn;
-	
+	private WebElement wishlistBtn;
+
 	public void clickWishListBtn() {
 		wishlistBtn.click();
+	}
+
+	@FindBy(css = "div.alert")
+	private WebElement wishListMessage;
+	
+	public String displayWishListMessage() {
+		return wishListMessage.getText();
 	}
 
 }

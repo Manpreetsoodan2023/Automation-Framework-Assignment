@@ -13,7 +13,7 @@ public class SearchIphone extends TestBase {
 	}
 	
 	@FindBy(xpath = "//a[text()='iPhone']")
-	WebElement iphoneBtn;
+	private WebElement iphoneBtn;
 	
 	
     public Iphone clickIphoneBtn() {

@@ -32,23 +32,19 @@ public class MyAccount extends TestBase {
 
 	public NewsletterSubscription getSideNavItems() {
 
-//		List<WebElement> columnElements = wd.findElements(By.cssSelector("a.list-group-item"));
-//		for (WebElement element : columnElements) {
-//
-//			if (element.getText().contains("Newsletter")) {
-//				
-//				element.click();
-//			}
-		
-		wd.findElement(By.cssSelector("div.list-group>a:nth-of-type(12)")).click();
-			
-		
-		
+		List<WebElement> columnElements = wd.findElements(By.cssSelector("a.list-group-item"));
+		for (WebElement element : columnElements) {
+
+			if (element.getText().equalsIgnoreCase("Newsletter")) {
+				element.click();
+				break;
+			}
+		}
 		return new NewsletterSubscription();
 	}
 
 	@FindBy(css = "div.alert")
-	WebElement subscriptionSuccessMessage;
+	private WebElement subscriptionSuccessMessage;
 
 	public String displaySubscriptionSuccessMessage() {
 		return subscriptionSuccessMessage.getText();

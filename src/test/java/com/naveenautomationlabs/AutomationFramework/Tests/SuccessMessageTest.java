@@ -7,11 +7,9 @@ import org.testng.annotations.Test;
 
 import com.naveenautomationlabs.AutomationFramework.Pages.AppleCinema30;
 import com.naveenautomationlabs.AutomationFramework.Pages.Checkout;
-import com.naveenautomationlabs.AutomationFramework.Pages.Iphone;
 import com.naveenautomationlabs.AutomationFramework.Pages.Monitors;
 import com.naveenautomationlabs.AutomationFramework.Pages.MyAccount;
 import com.naveenautomationlabs.AutomationFramework.Pages.RegisterAccount;
-import com.naveenautomationlabs.AutomationFramework.Pages.SearchIphone;
 import com.naveenautomationlabs.AutomationFramework.Pages.ShoppingCart;
 import com.naveenautomationlabs.AutomationFramework.Pages.SuccessMessage;
 import com.naveenautomationlabs.AutomationFramework.Pages.YourStore;
@@ -19,16 +17,15 @@ import com.naveenautomationlabs.AutomationFramework.base.TestBase;
 
 public class SuccessMessageTest extends TestBase {
 
-	YourStore yourStore;
-	RegisterAccount registerAccount;
-	MyAccount myAccount;
-	Monitors monitors;
-	AppleCinema30 appleCinema;
-	ShoppingCart shoppingCart;
-	Checkout checkout;
-	SuccessMessage success;
-	SearchIphone searchIphone;
-	Iphone iphone;
+	private YourStore yourStore;
+	private RegisterAccount registerAccount;
+	private MyAccount myAccount;
+	private Monitors monitors;
+	private AppleCinema30 appleCinema;
+	private ShoppingCart shoppingCart;
+	private Checkout checkout;
+	private SuccessMessage success;
+
 
 	@BeforeMethod
 	public void setUp() {
@@ -53,9 +50,7 @@ public class SuccessMessageTest extends TestBase {
 		checkout.enterBillingDetails();
 		checkout.confirmFinalOrder();
 		success = checkout.clickConfirmOrderBtn();
-
-		String messageText = success.displaySuccessMessage();
-		Assert.assertEquals(messageText, "Your order has been placed!", "Correct message is not displayed");
+		Assert.assertEquals(success.displaySuccessMessage(), "Your order has been placed!", "Correct message is not displayed");
 		success.clickContinueBtn();
 
 	}

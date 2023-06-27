@@ -14,7 +14,7 @@ public class NewsletterSubscription extends TestBase {
 	}
 
 	@FindBy(css = "input[value=\"1\"]")
-	WebElement yesRdioBtn;
+	private WebElement yesRdioBtn;
 
 	public void clickYesRadioBtn() {
 		yesRdioBtn.click();
@@ -22,7 +22,7 @@ public class NewsletterSubscription extends TestBase {
 	}
 
 	@FindBy(css = "input[value=\"Continue\"]")
-	WebElement continueBtn;
+	private WebElement continueBtn;
 
 	public MyAccount clickContinueBtn() {
 		continueBtn.click();

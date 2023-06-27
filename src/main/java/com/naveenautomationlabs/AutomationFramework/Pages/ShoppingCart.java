@@ -24,7 +24,7 @@ public class ShoppingCart extends TestBase {
 
 	
 	@FindBy(css = "div.alert")
-	WebElement shoppingCartMessage;
+	private WebElement shoppingCartMessage;
 
 	public String displaySuccessMessage() {
 		return shoppingCartMessage.getText();

@@ -6,33 +6,17 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.naveenautomationlabs.AutomationFramework.Pages.AccountLogin;
-import com.naveenautomationlabs.AutomationFramework.Pages.AppleCinema30;
-import com.naveenautomationlabs.AutomationFramework.Pages.Checkout;
-import com.naveenautomationlabs.AutomationFramework.Pages.Iphone;
-import com.naveenautomationlabs.AutomationFramework.Pages.Monitors;
 import com.naveenautomationlabs.AutomationFramework.Pages.MyAccount;
 import com.naveenautomationlabs.AutomationFramework.Pages.NewsletterSubscription;
-import com.naveenautomationlabs.AutomationFramework.Pages.RegisterAccount;
-import com.naveenautomationlabs.AutomationFramework.Pages.SearchIphone;
-import com.naveenautomationlabs.AutomationFramework.Pages.ShoppingCart;
-import com.naveenautomationlabs.AutomationFramework.Pages.SuccessMessage;
 import com.naveenautomationlabs.AutomationFramework.Pages.YourStore;
 import com.naveenautomationlabs.AutomationFramework.base.TestBase;
 
 public class MyAccountTest extends TestBase {
 
-	YourStore yourStore;
-	RegisterAccount registerAccount;
-	MyAccount myAccount;
-	Monitors monitors;
-	AppleCinema30 appleCinema;
-	ShoppingCart shoppingCart;
-	Checkout checkout;
-	SuccessMessage success;
-	SearchIphone searchIphone;
-	Iphone iphone;
-	AccountLogin accountLogin;
-	NewsletterSubscription newsletter;
+	private YourStore yourStore;
+	private MyAccount myAccount;
+	private AccountLogin accountLogin;
+	private NewsletterSubscription newsletter;
 
 	@BeforeMethod
 	public void setUp() {
@@ -47,7 +31,7 @@ public class MyAccountTest extends TestBase {
 		yourStore.clickMyAccountBtn();
 		accountLogin = yourStore.clickLoginBtn();
 		myAccount = accountLogin.loginToPortal();
-		newsletter = myAccount.getSideNavItems();
+		newsletter =myAccount.getSideNavItems();
 		newsletter.clickYesRadioBtn();
 		newsletter.clickContinueBtn();
 

@@ -22,25 +22,25 @@ public class AppleCinema30 extends TestBase {
 	}
 
 	@FindBy(xpath = "(//input[@name='option[218]'])[2]")
-	WebElement Radiobtn;
+	private WebElement Radiobtn;
 
 	@FindBy(css = "div.checkbox>label>input[value=\"9\"]")
-	WebElement Checkbox;
+	private WebElement Checkbox;
 
 	@FindBy(css = "#input-option217")
-	WebElement Dropdown;
+	private WebElement Dropdown;
 
 	@FindBy(css = "#input-option209")
-	WebElement textInputArea;
+	private WebElement textInputArea;
 
 	@FindBy(css = "#button-upload222")
-	WebElement uploadFileButton;
+	private WebElement uploadFileButton;
 
 	@FindBy(xpath = "//button[text()=\"Add to Cart\"]")
-	WebElement addToCartBtn;
+	private WebElement addToCartBtn;
 
 	@FindBy(xpath = "//a[text()=\"shopping cart\"]")
-	WebElement shoppingCartBtn;
+	private WebElement shoppingCartBtn;
 
 	private void selectRadioBtn() {
 		Radiobtn.click();

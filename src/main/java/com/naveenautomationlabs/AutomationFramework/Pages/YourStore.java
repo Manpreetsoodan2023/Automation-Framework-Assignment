@@ -59,23 +59,20 @@ public class YourStore extends TestBase {
 		return new SearchIphone();
 	}
 
-	public Iphone getRowElement(String text) {
+	public Iphone getRowElement() {
 
 		List<WebElement> rowElements = wd.findElements(By.cssSelector("div.product-layout div.caption a"));
 
 		for (WebElement element : rowElements) {
 
-			if (element.getText().contains(text)) {
+			if (element.getText().equalsIgnoreCase("iPhone")) {
 
 				element.click();
-
+				
+				break;
 			}
 		}
 		return new Iphone();
 	}
 
-	
-
-	}
-
-
+}
