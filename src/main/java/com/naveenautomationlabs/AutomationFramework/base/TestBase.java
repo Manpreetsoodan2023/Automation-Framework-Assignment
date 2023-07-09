@@ -15,6 +15,8 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.annotations.BeforeClass;
 
 import com.naveenautomationlabs.AutomationFramework.Listeners.WebdriverEvents;
+import com.naveenautomationlabs.AutomationFramework.Utils.Browsers;
+import com.naveenautomationlabs.AutomationFramework.Utils.Environment;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -26,6 +28,8 @@ public class TestBase {
 	public static Logger logger;
 	private WebdriverEvents events;
 	private EventFiringWebDriver eDriver;
+	private Browsers BROWSER = Browsers.CHROME;
+	private Environment ENV = Environment.PROD;
 
 	public TestBase() {
 		prop = new Properties();
@@ -56,10 +60,8 @@ public class TestBase {
 
 	public void initialisation() {
 
-		String browserName = prop.getProperty("browser");
-
-		switch (browserName) {
-		case "chrome":
+		switch (BROWSER.getBrowserName()) {
+		case "Chrome":
 			wd = WebDriverManager.chromedriver().create();
 
 			break;
@@ -83,6 +85,7 @@ public class TestBase {
 		events = new WebdriverEvents();
 		eDriver.register(events);
 		wd = eDriver;
+		wd.get(ENV.getUrl());
 
 		wd.get(prop.getProperty("URL"));
 		wd.manage().timeouts().implicitlyWait(Long.parseLong(prop.getProperty("IMPLICIT_WAIT")), TimeUnit.SECONDS);
