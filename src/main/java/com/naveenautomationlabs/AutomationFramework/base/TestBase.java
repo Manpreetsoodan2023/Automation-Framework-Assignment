@@ -15,7 +15,6 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.annotations.BeforeClass;
 
 import com.naveenautomationlabs.AutomationFramework.Listeners.WebdriverEvents;
-import com.naveenautomationlabs.AutomationFramework.Utils.Browsers;
 import com.naveenautomationlabs.AutomationFramework.Utils.Environment;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -28,7 +27,7 @@ public class TestBase {
 	public static Logger logger;
 	private WebdriverEvents events;
 	private EventFiringWebDriver eDriver;
-	private Browsers BROWSER = Browsers.CHROME;
+//	private Browsers BROWSER = Browsers.CHROME; 
 	private Environment ENV = Environment.PROD;
 
 	public TestBase() {
@@ -59,8 +58,21 @@ public class TestBase {
 	}
 
 	public void initialisation() {
-
-		switch (BROWSER.getBrowserName()) {
+		
+		String browserName= System.getProperty("Browser");
+		
+		if(browserName.contains("Edge"))
+		{
+			browserName ="Edge";
+		}
+		else if(browserName.contains("Chrome"))
+		{
+			browserName ="Chrome";
+		}
+		
+		
+		switch (browserName) {
+		
 		case "Chrome":
 			wd = WebDriverManager.chromedriver().create();
 
