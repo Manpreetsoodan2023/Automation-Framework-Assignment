@@ -3,7 +3,6 @@ package com.naveenautomationlabs.AutomationFramework.Tests;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import com.naveenautomationlabs.AutomationFramework.Pages.Iphone;
@@ -27,7 +26,7 @@ public class ShoppingCartTest extends TestBase {
 
 	}
 
-	@Test @Ignore
+	@Test 
 	public void validateShoppingCartMessage() {
 
 		yourStore.enterSearchText();
