@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Failed suite [Suite]]" guice-stage="DEVELOPMENT">
+  <listeners>
+    <listener class-name="com.naveenautomationlabs.AutomationFramework.Listeners.CustomListener"/>
+    <listener class-name="com.naveenautomationlabs.AutomationFramework.Listeners.TransformerForRetry"/>
+    <listener class-name="com.naveenautomationlabs.AutomationFramework.Listeners.ExtentReportListener"/>
+  </listeners>
+  <test thread-count="5" name="Test(failed)(failed)">
+    <classes>
+      <class name="com.naveenautomationlabs.AutomationFramework.Tests.ShoppingCartTest">
+        <methods>
+          <include name="validateShoppingCartMessage"/>
+          <include name="quit"/>
+          <include name="setUpLogger"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- com.naveenautomationlabs.AutomationFramework.Tests.ShoppingCartTest -->
+      <class name="com.naveenautomationlabs.AutomationFramework.Tests.SuccessMessageTest">
+        <methods>
+          <include name="setUpLogger"/>
+          <include name="setUp"/>
+          <include name="validateOrderPlacedSuccessfully"/>
+          <include name="quit"/>
+        </methods>
+      </class> <!-- com.naveenautomationlabs.AutomationFramework.Tests.SuccessMessageTest -->
+    </classes>
+  </test> <!-- Test(failed)(failed) -->
+</suite> <!-- Failed suite [Failed suite [Suite]] -->
