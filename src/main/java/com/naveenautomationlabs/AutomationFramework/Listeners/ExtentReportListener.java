@@ -14,6 +14,7 @@ import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import com.naveenautomationlabs.AutomationFramework.Utils.Utils;
 
 public class ExtentReportListener extends TestListenerAdapter {
 
@@ -25,7 +26,7 @@ public class ExtentReportListener extends TestListenerAdapter {
 	public void onStart(ITestContext testContext) {
 
 		// Generate Time Stamp
-		String timeStamp = new SimpleDateFormat("dd.MM.yyyy.HH.mm.ss").format(new Date());
+		String timeStamp = Utils.getCurrentDateTimeStamp();
 
 		// Name of the Report
 		String repName = "Report_" + timeStamp + ".html";

@@ -28,6 +28,7 @@ public class TestBase {
 	public static Logger logger;
 	private WebdriverEvents events;
 	private EventFiringWebDriver eDriver;
+	
 	private Browsers BROWSER = Browsers.CHROME; 
 	private Environment ENV = Environment.PROD;
 
@@ -98,6 +99,7 @@ public class TestBase {
 		events = new WebdriverEvents();
 		eDriver.register(events);
 		wd = eDriver;
+		
 		wd.get(ENV.getUrl());
 
 		wd.get(prop.getProperty("URL"));
